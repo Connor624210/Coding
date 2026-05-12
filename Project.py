@@ -29,7 +29,7 @@ quiz = [
         "question": "Many people believe that plastic pollution is only an issue if marine animals eat it, however thats not true what other issues does it cause",
         "options": ["A) plastic acts as a toxic sponge which soaks up chemicals from the water which allows the chemicals to enter the food chain", 
         "B) Plastic debris can carry diseases and invasive species to new environments", 
-        "C) Plastic pollution causes over $10 billion in annual economic losses to marine ecosystems, impacting tourism, fishing, and shipping industries.", "D) Option"],
+        "C) Plastic pollution causes over $10 billion in annual economic losses to marine ecosystems, impacting tourism, fishing, and shipping industries.", "D) Its good for the environment"],
         "answer": ["A", "B", "C"],
         "furter_explanation": ""
     }
@@ -49,13 +49,13 @@ for item in quiz:
 
     guess = input("Your answer (A, B, C, or D): ").upper()
 
-    #wanting further explanation to be printed here
-
-    if guess == item["answer"]:
+    print(item["furter_explanation"])
+    
+    if guess in item["answer"]:
         print("Correct")
         total_points += 100
     
     else:
         print("Incorrect")
 
-print(f"Your total points: {total_points}")
+print(f"{user_name} your total points is: {total_points}")
