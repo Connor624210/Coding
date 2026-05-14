@@ -26,7 +26,7 @@ quiz = [
         "furter_explanation": "Because plastic is synthetic and not found in nature, most bacteria cannot decompose it; instead, it undergoes photodegradation, where sunlight slowly weakens the material until it shatters into microscopic fragments. These resulting microplastics never truly disappear or return to the earth as nutrients, meaning every piece of plastic ever made still exists in some form today. This permanent presence in the environment is why plastic is considered one of the most persistent pollutants on the planet, as it continues to accumulate in our soil and oceans indefinitely."
     },
     {
-        "question": "Many people believe that plastic pollution is only an issue if marine animals eat it, however thats not true what other issues does it cause.",
+        "question": "Many people believe that plastic pollution is only an issue if marine animals eat it, however thats not true what other issues does it cause?",
         "options": ["A) plastic acts as a toxic sponge which soaks up chemicals from the water which allows the chemicals to enter the food chain", 
         "B) Plastic debris can carry diseases and invasive species to new environments", 
         "C) Plastic pollution causes over $10 billion in annual economic losses to marine ecosystems, impacting tourism, fishing, and shipping industries.", "D) Its good for the environment"],
@@ -44,13 +44,21 @@ user_name = input("What is your user name? ")
 for item in quiz:
     print(item["question"])
 
+    print()
+
     for option in item["options"]:
         print(option)
 
+    print()
+
     guess = input("Your answer (A, B, C, or D): ").upper().replace(" ", "")
+
+    print()
 
     print(item["furter_explanation"])
     
+    print()
+
     if guess in item["answer"]:
         print("Correct")
         total_points += 100
@@ -58,4 +66,9 @@ for item in quiz:
     else:
         print("Incorrect")
 
+    print()
+    print("****************************************************************************************************************************************************************************************************************")
+    print()
+
 print(f"{user_name} your total points is: {total_points}")
+print("Thank you for trying out my eductional quiz about platic polltion in our oceans, I hope you leanrt something new")
