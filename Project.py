@@ -1,3 +1,9 @@
+''' An educational quiz python program about plastic pollution in our oceans
+Made by Connor Nesdale
+Date created: 6th May 2026 '''
+
+
+
 import random
 
 quiz = [
@@ -40,6 +46,37 @@ random.shuffle(quiz)
 total_points = 0
 
 user_name = input("What is your user name? ")
+print()
+
+while True:
+    add_question = input("Would you like to create a question? (Y/N) ").upper().replace(" ", "")
+    if add_question != ["YES","Y"]:
+        print()
+
+        new_question = input("Whats your qustion for the quiz? ")
+        print()
+
+        new_option1 = input("Whats your first option? ")
+        new_option2 = input("Whats your second option? ")
+        new_option3 = input("Whats your third option? ")
+        new_option4 = input("Whats your fourth option? ")
+
+        print()
+
+        new_options = [f"A) {new_option1}", f"B) {new_option2}", f"C) {new_option3}", f"D) {new_option4}"]
+
+        new_answer = input("What is the correct answer? (A, B, C, or D): ").upper().replace(" ","")
+        print()
+        new_furter_explanation = input("Enter a further explanation for this answer: ")
+        print()
+
+        quiz.append({
+        "question": new_question,
+        "options": new_options,
+        "answer": new_answer,
+        "furter_explanation": new_furter_explanation
+        })
+        break
 
 for item in quiz:
     print(item["question"])
