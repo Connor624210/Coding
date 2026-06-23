@@ -43,7 +43,6 @@ quiz = [
 
 
 
-
 def user_question():
 
     while True:
@@ -110,7 +109,18 @@ def start_quiz():
         print()
         print("****************************************************************************************************************************************************************************************************************")
         print()
-    return total_points
+
+        percentage = total_points / len(quiz)
+
+        if percentage == 100:
+            rank = "Master"
+        elif percentage >= 70:
+            rank = "Pro" 
+        else:
+            rank = "Noob"
+
+    return total_points, rank
+    
 
 
 
@@ -120,9 +130,9 @@ def main():
 
         user_question()
 
-        total_points=start_quiz()
+        total_points, rank = start_quiz()
 
-        print(f"{user_name} your total points is: {total_points}")
+        print(f"{user_name} your total points is: {total_points} your rank is: {rank}")
         print("Thank you for trying out my eductional quiz about plastic pollution in our oceans, I hope you learned something new")
 
 if __name__ == "__main__":
