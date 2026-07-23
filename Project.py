@@ -84,6 +84,7 @@ def user_question():
 
         print()
         new_options = [f"A) {new_option1}", f"B) {new_option2}", f"C) {new_option3}", f"D) {new_option4}"]
+        random.shuffle(new_options)
 
         new_answer = input("What is the correct answer? (A, B, C, or D): ").upper().replace(" ", "")
         print()
