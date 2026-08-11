@@ -66,37 +66,50 @@ quiz = [
 
 
 def user_question():
-
     while True:
+
         add_question = input("Would you like to create a question? (Y/N): ").upper().replace(" ", "")
         print()
-        if add_question not in ['YES', 'Y']:
+
+        if add_question in ['YES', 'Y', "NO", "N"]:
             break
 
-        print()
-        new_question = input("What's your question for the quiz? ")
-        print()
+        print("Answer is not vaild. Vaild answers include: Y or N")
 
-        new_option1 = input("What's your first option? ")
-        new_option2 = input("What's your second option? ")
-        new_option3 = input("What's your third option? ")
-        new_option4 = input("What's your fourth option? ")
+    if add_question in ['NO', 'N']:
+        return
 
-        print()
-        new_options = [f"A) {new_option1}", f"B) {new_option2}", f"C) {new_option3}", f"D) {new_option4}"]
-        random.shuffle(new_options)
+    print()
+    new_question = input("What's your question for the quiz? ")
+    print()
 
+    new_option1 = input("What's your first option? ")
+    new_option2 = input("What's your second option? ")
+    new_option3 = input("What's your third option? ")
+    new_option4 = input("What's your fourth option? ")
+
+    print()
+    new_options = [f"A) {new_option1}", f"B) {new_option2}", f"C) {new_option3}", f"D) {new_option4}"]
+    random.shuffle(new_options)
+
+    while True:
         new_answer = input("What is the correct answer? (A, B, C, or D): ").upper().replace(" ", "")
         print()
-        new_further_explanation = input("Enter a further explanation for this answer: ")
-        print()
 
-        quiz.append({
-            "question": new_question,
-            "options": new_options,
-            "answer": new_answer,
-            "further_explanation": new_further_explanation
-        })
+        if new_answer in ['A', 'B', 'C', 'D']:
+            break
+
+        print("Answer is not vaild. Vaild answers include: A, B, C, D")
+
+    new_further_explanation = input("Enter a further explanation for this answer: ")
+    print()
+
+    quiz.append({
+        "question": new_question,
+        "options": new_options,
+        "answer": new_answer,
+        "further_explanation": new_further_explanation
+    })
 
 
 def start_quiz():
@@ -111,9 +124,16 @@ def start_quiz():
         for option in item["options"]:
             print(option)
 
-        print()
-        guess = input("Your answer (A, B, C, or D): ").upper().replace(" ", "")
-        print()
+        while True:
+            print()
+            guess = input("Your answer (A, B, C, or D): ").upper().replace(" ", "")
+            print()
+
+            if guess in ["A", "B", "C", "D"]:
+                break
+
+            else:
+                print("Answer is not vaild. Vaild answers include: A, B, C, D")
 
         print(item["further_explanation"])
         print()
@@ -133,7 +153,7 @@ def start_quiz():
 
         if percentage == 100:
             rank = "Master"
-        elif percentage >= 70:
+        elif percentage >= 80:
             rank = "Pro"
         else:
             rank = "Noob"
@@ -150,7 +170,7 @@ def main():
 
     total_points, rank = start_quiz()
 
-    print(f"{user_name} your total points is: {total_points} your rank is: {rank}")
+    print(f"{user_name} your total points is: {total_points} Your rank is: {rank}")
     print("Thank you for trying out my eductional quiz about plastic pollution in our oceans, I hope you learned something new")
 
 if __name__ == "__main__":
