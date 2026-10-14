@@ -9,7 +9,8 @@ Date: 2026-05-06
 
 
 import random
-
+#Main question bank where all the pre loaded questions are stored
+#Correct answers and educational facts are also stored here
 quiz = [
     {
         "question": "How much garbage enters the ocean every minute?",
@@ -64,7 +65,8 @@ quiz = [
 
 ]
 
-
+#This is where the user is able to create their own questions thats added to the quiz if they choose to 
+#The while True, loops until it reveives vaild input "Yes", or "No"
 def user_question():
     while True:
 
@@ -78,7 +80,7 @@ def user_question():
 
     if add_question in ['NO', 'N']:
         return
-
+#Here is where I collect the users custom question and possible answers
     print()
     new_question = input("What's your question for the quiz? ")
     print()
@@ -87,11 +89,12 @@ def user_question():
     new_option2 = input("What's your second option? ")
     new_option3 = input("What's your third option? ")
     new_option4 = input("What's your fourth option? ")
-
+#This is where the custom question possible answers are randomly shuffled and labled with letters 
     print()
     new_options = [f"A) {new_option1}", f"B) {new_option2}", f"C) {new_option3}", f"D) {new_option4}"]
     random.shuffle(new_options)
-
+#This is where I validate the users custom question correct answer by making sure its either A,B,C,D
+#Otherwise it loops until it recevies the proper input
     while True:
         new_answer = input("What is the correct answer? (A, B, C, or D): ").upper().replace(" ", "")
         print()
@@ -100,10 +103,10 @@ def user_question():
             break
 
         print("Answer is not vaild. Vaild answers include: A, B, C, D")
-
+#This is where I get the user to provide extra infomation about why the answer to their question is that 
     new_further_explanation = input("Enter a further explanation for this answer: ")
     print()
-
+#This is the place I add the users custom question into the main list "quiz"
     quiz.append({
         "question": new_question,
         "options": new_options,
@@ -111,33 +114,34 @@ def user_question():
         "further_explanation": new_further_explanation
     })
 
-
+#This is where the quiz starts
 def start_quiz():
 
     random.shuffle(quiz)
     total_points = 0
-
+#Here is where the program loops through each question and possible answers 
     for item in quiz:
         print(item["question"])
 
         print()
         for option in item["options"]:
             print(option)
-
+#Here is where the program asks for the users answer to the question 
         while True:
             print()
             guess = input("Your answer (A, B, C, or D): ").upper().replace(" ", "")
             print()
-
+#This is where the program checks if the users answer is vaild else it loops until a vaild reponse is given
             if guess in ["A", "B", "C", "D"]:
                 break
 
             else:
                 print("Answer is not vaild. Vaild answers include: A, B, C, D")
-
+#This is where the program prints the further explanation to explain to the user why the answer is that
         print(item["further_explanation"])
         print()
-
+#This is where the program sees if the user got the question correct
+#This is where the program gives the user points depending if they got the question right or not
         if guess in item["answer"]:
             print("Correct")
             total_points += 100
@@ -148,7 +152,7 @@ def start_quiz():
         print()
         print("****************************************************************************************************************************************************************************************************************")
         print()
-
+#This is where the program asigns the user a title depending on how many question they got right
         percentage = total_points / len(quiz)
 
         if percentage == 100:
@@ -160,16 +164,16 @@ def start_quiz():
 
     return total_points, rank
 
-
+#This code illistrates how the program is run and what fuctions are run before others
 def main():
-
+#This is where the program asks the user for their username
     user_name = input("What is your user name? ")
     print()
-
+#This is where the program runs the user_question code which is when the program asks if the user wants to create their own question 
     user_question()
-
+#This is where the program runs the start_quiz code which is when the program starts asking the user questions
     total_points, rank = start_quiz()
-
+#This is where the program dispalys the users total points and their rank, and the thank you message 
     print(f"{user_name} your total points is: {total_points} Your rank is: {rank}")
     print("Thank you for trying out my eductional quiz about plastic pollution in our oceans, I hope you learned something new")
 
